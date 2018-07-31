@@ -1,0 +1,23 @@
+{% load static %}<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Step 5</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  </head>
+  <body>
+	<article>
+		<h1>Application Version {{installVersion}}</h1>
+		<br>
+		{% if installStatus %}
+		<p>The installation completed successfully. The next step is to start up the tables and assign them entity IDs.</p>
+		{% else %}
+		<p><font color="red">The installation failed to complete. Please review the installation log, review your environment settings and try the installation again.</font></p>
+		{% endif %}
+	</article>
+	<a href="/downloadlogfile/{{logfilename}}" download><input class="btn btn-primary" type="button" id="DownloadBtn" name="Download" value="Download Log File"></a>
+  </body>
+</html>

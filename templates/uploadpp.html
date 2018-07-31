@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Upload
+{% endblock %}
+{% block breadcrumb %}
+<li class="breadcrumb-item" style="font-size: 2rem;"><a href="/">Dashboard</a></li>
+<li class="breadcrumb-item active" style="font-size: 2rem;" aria-current="page">Upload</li>
+{% endblock %}
+
+{% block content %}
+<script src="{% static 'js/uploadpp.js' %}"></script>
+<form id="uploadPPForm" method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+	<div class="custom-file">
+		<input type="file" class="custom-file-input" id="uploadbtn"  name="ppinstallFile" required>
+		<label id="lbluploadbtn" class="custom-file-label" for="uploadbtn">Choose file...</label>
+		<div class="invalid-feedback" id="invalidFile" style="display: none">Incorrect File Type</div>
+	</div>
+	<div style="margin: auto; width: 50%; text-align: center; padding-top: 10px;">
+		<input class="btn btn-primary" id="submit" type="submit" value="Upload" style="display: none">
+	</div>
+</form>
+<br><br>
+{% endblock %}

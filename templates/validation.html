@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Validate
+{% endblock %}
+{% block breadcrumb %}
+<li class="breadcrumb-item" style="font-size: 2rem;"><a href="/">Dashboard</a></li>
+<li class="breadcrumb-item active" style="font-size: 2rem;" aria-current="page">Validate</li>
+{% endblock %}
+
+{% block content %}
+<script type="text/javascript">
+var filefound = ('{{filefound}}' == 'True');
+</script>
+<script src="{% static 'js/validatepp.js' %}"></script>
+	<div style="margin: auto; width: 50%; text-align: center; padding-top: 10px;">
+		<p>To begin validation, please press validate.</p>
+		{% if filefound %}
+                <input class="btn btn-primary btn-lg" id="validatebtn" type="button" value="Validate">
+		{% else %}
+		<input class="btn btn-primary btn-lg" id="validatebtn" type="button" value="Validate" disabled="disabled"><br>
+		<div class="invalid-feedback" id="notFoundFile" style="display: inline;">Validation File Not Found</div>
+		{% endif %}
+        </div>
+<br><br>
+<div class="container" style="background-color: #e9ecef; border: 1px solid #ced4da; height: 400px; border-radius: .25rem; overflow: auto; display: none; padding: 1rem" id="log" >
+</div>
+{% endblock %}

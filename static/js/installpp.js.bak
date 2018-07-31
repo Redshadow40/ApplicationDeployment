@@ -1,0 +1,75 @@
+var jobRunning = false;
+var logPosition = 0;
+
+$(document).ready(function(){
+	listlogfiles();
+	installationRunningStatus();
+	$('#installbtn').click(function(){
+		$('#installbtn').attr('disabled', 'disabled');
+		$('#installbtn').val('Installing...');
+		$('#log').css('display', 'block');
+		$('#log').html('');
+		beginInstallation();
+		jobRunning = true;
+		logPosition = 0;
+	});
+	setInterval(function(){
+		activeInstallPP()
+	}, 2000);
+	setInterval(function(){
+		listlogfiles()
+	}, 5000);
+});
+function installationRunningStatus(){
+	$.getJSON("/checkJobStatus/", function(data){
+		if (data['isalive']){
+			$('#installbtn').attr('disabled', 'disabled');
+			if (data['typeofJob'] == 'Installation'){
+				$('#installbtn').val('Installing...');
+				$('#log').css('display', 'block');
+			} else {
+				$('#installbtn').val('Busy...');
+                                $('#log').css('display', 'block');
+				$('#log').html("There is currently a running job: " + data['typeofJob']);
+			}
+			jobRunning = true;
+		}	
+		else if (filefound){
+			$('#installbtn').removeAttr('disabled');
+			$('#installbtn').val('Install');
+			jobRunning = false;
+		}
+	});
+}
+function beginInstallation(){
+	$.getJSON("beginInstallPP/", function(data){
+		$('#log').html($('#log').html() + data['install'] + '<br>');
+        });
+}
+function activeInstallPP(){
+        if (jobRunning){
+                $.getJSON("activeInstallPP/" + logPosition, function(data){
+                        for (var x in data['activeInstall']){
+				if (data['activeInstall'][x].toLowerCase().includes('passed'))
+	                                $('#log').html($('#log').html() + '<font color="green">' + data['activeInstall'][x] + '</font><br>');
+				else if (data['activeInstall'][x].toLowerCase().includes('failed'))
+					$('#log').html($('#log').html() + '<font color="red">' + data['activeInstall'][x] + '</font><br>');
+				else if (data['activeInstall'][x].toLowerCase().includes('completed'))
+					$('#log').html($('#log').html() + '<font color="blue">' + data['activeInstall'][x] + '</font><br>');
+				else
+					$('#log').html($('#log').html() + data['activeInstall'][x] + '<br>');
+                                $('#log').scrollTop($('#log')[0].scrollHeight);
+				logPosition++;
+                        }
+                });
+                installationRunningStatus();
+        }
+}
+function listlogfiles(){
+	$.getJSON("listlogfiles/", function(data){
+		$('#logmenu').html('');
+		for (var file in data['logFiles']){
+			$('#logmenu').html($('#logmenu').html() + '<a class="dropdown-item" href="showlogfile/' + data['logFiles'][file] + '">' + data['logFiles'][file] + '</a>');
+		}
+	});
+}

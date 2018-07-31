@@ -1,0 +1,21 @@
+html {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	height: 100%;
+	width: 100%;
+}
+
+#workcontent {
+	height: 100%;
+	width: 100%;
+}
+
+#log {
+	height: 50%;
+	border-radius: .25rem; 
+	overflow: auto; 
+	padding: 1rem;
+}

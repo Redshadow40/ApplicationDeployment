@@ -1,0 +1,191 @@
+.windows {
+	width: 100%; 
+	height: 100%; 
+	margin-top: 10px; 
+	margin: auto; 
+}
+
+#application-screen{
+	position: absolute;
+}
+
+#startmenu {
+	height: 600px; 
+	width: 500px; 
+	background: white; 
+	position: fixed; 
+	bottom: 50px; 
+	left: 0;
+	border: 2px solid #2EB1FA;
+	border-radius: 5px 5px 0px 0px;
+	display: none;
+	z-index: 100;
+}
+
+.menuhf {
+	height: 80px;
+	width: 100%;
+	background: linear-gradient(#2EB1FA, #107DBA);
+}
+
+#startmenuheader {
+	padding-top: 25px;
+	padding-left: 25px;
+}
+
+#startmenufooter {
+	height: 60px;
+	position: absolute;
+	bottom: 0px;
+	border-right: 1px solid #2EB1FA;
+	padding-top: 10px;
+	padding-right: 20px;
+	text-align: right;
+	color: white;
+}
+
+#screenfooter {
+	width: 100%;
+        height: 30px;
+        position: absolute;
+	display: table;
+        bottom: 0;
+        left: 0;
+	background: linear-gradient(#2EB1FA, #107DBA);
+}
+
+#taskbar {
+	width: 68%;
+	position: absolute;
+	height: 50px;
+	display: table-cell;
+	bottom: 0;
+	margin-bottom: 3px;
+}
+
+.taskbar-application {
+	background-color: linear-gradient(#2EB1FA, #107DBA);
+	border: 2px solid #2EB1FA;
+	width: 150px;
+	height: 50px;
+	color: white;
+	padding-top: 10px;
+	text-align: center;
+	border-radius: 5px;
+}
+
+#clock {
+	width: 150px;
+        display: table-cell;
+}
+
+#start {
+	width: 150px; 
+	height: 55px;
+	background: linear-gradient(#80ff80, #008000); 
+	border: .5px solid #008000; 
+	border-radius: 0px 10px 0px 0px; 
+	text-align: center; 
+	padding-top: 5px
+}
+
+#restart {
+	width: 42px;
+	height: 42px;
+	padding: 0px;
+	border: 0px;
+	background: Transparent;
+	margin: .1em;dd
+	text-align: center;
+}
+
+.right-menu-button {
+	padding: 0px;
+        border: 0px;
+        background: Transparent;
+	height: 100%;
+	width: 100%;
+        text-align: left;
+	color: #0872AD;
+}
+
+.left-menu-button {
+        padding: 0px;
+        border: 0px;
+        background: Transparent;
+        height: 100%;
+	width: 100%;
+	text-align: left;
+}
+
+.button:focus {
+	outline-width: 0;
+}
+
+#time {
+	color: white;
+	right: 0;
+	text-align: right;
+	padding-right: 40px;
+	padding-top: 5px;
+}
+
+.menuleft {
+	border-right: 1px solid #2EB1FA;
+}
+
+.menucontent {
+	height: 100%;
+}
+
+.menuright {
+	background-color: #A1D9F9;
+}
+
+.menuright .list-group-item {
+	color: #0872AD;
+}
+
+.menuright .list-group-item-action:hover {
+	background-color: #2EB1FA;
+}
+
+.application-zone {
+	position: absolute;
+	bottom: 30%;
+	left: 20%;
+	width: 60%;
+	height: 60%;
+	padding: 0px;
+}
+
+.application-outline {
+	border: 2px solid #2EB1FA;
+	border-radius: 5px;
+	width: 100%;
+	height: 100%;
+	background-color: white;
+}
+
+.application-menu {
+	background: linear-gradient(#2EB1FA, #107DBA);
+	height: 27px;
+	width: 100%;
+	padding-left: 5px;
+}
+
+.application-close-button {
+	float: right;
+	height: 25px;
+	width: 25px;
+	background: red;
+	text-align: center;
+	border-radius: 5px;
+	color: white;
+	padding: 0px;
+}
+
+.application-content {
+	width: 100%; 
+	height: 94.6%;
+}

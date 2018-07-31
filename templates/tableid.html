@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Table ID
+{% endblock %}
+{% block breadcrumb %}
+<li class="breadcrumb-item" style="font-size: 2rem;"><a href="/">Dashboard</a></li>
+<li class="breadcrumb-item active" style="font-size: 2rem;" aria-current="page">Current Tables</li>
+{% endblock %}
+
+{% block content %}
+<script src="{% static 'js/tableid.js' %}"></script>
+<script type="text/javascript">
+var tables = {};
+{% for table, id in tables.items %}
+tables["{{table}}"] = "{{id}}";
+{% endfor %}
+setTables(tables);
+</script>
+<p id="loginfo" style="display: none;">{{log}}</p>
+<form method="post" id='tableform'>
+	{% csrf_token %}
+	<input type="hidden" id="ChkApply" name="ChkApply" value="false">
+	<input type="hidden" id="ChkReset" name="ChkReset" value="false">
+        <table class="table table-striped">
+                <tr>
+                        <th>Table Name</th>
+                        <th>Entity ID</th>
+			<th>
+				<div align="right">
+					Reset Table
+					<input class="tableInput" type="checkbox" onchange="selectAll(this)">
+				</div>
+			</th>
+                </tr>
+                {% for table, id in tables.items %}
+		{% if table in activeJobs %}
+		<tr>
+                        <td id="{{table}}">{{table}}(active job)</td>
+                        <td>
+                                <input id="{{table}}Num" class="tableInput" type="number" name="{{table}}" value="{{id|slice:'1:'}}" disabled="true" style="opacity: .5">
+                        </td>
+                        <td align="right">
+                                <input id="{{table}}Box" class="tableInput" type="checkbox" name="tableReset[]" value="{{table}}" onchange="enableReset()" disabled="true" style="opacity: .5">
+                        </td>
+                </tr>
+		{% else %}
+                <tr>
+                        <td id="{{table}}">{{table}}</td>
+                        <td>
+                        	<input id="{{table}}Num" class="tableInput" type="number" name="{{table}}" value="{{id|slice:'1:'}}">
+                	</td>
+			<td align="right">
+				<input id="{{table}}Box" class="tableInput" type="checkbox" name="tableReset[]" value="{{table}}" onchange="enableReset()">
+			</td>
+                </tr>
+		{% endif %}
+        	{% endfor %}
+        </table>
+        <div style="float: right">
+		<input type="submit" class="tableInput btn btn-primary" id="ApplyID" name="ApplyID" value="Apply">
+        	<input type="submit" class="tableInput btn btn-primary" id="ResetTables" name="ResetTables" value="Reset Tables" disabled="true">
+	</div>
+</form>
+<br><br>
+<label for="log">log:</label>
+<div class="container" style="background-color: #e9ecef; border: 1px solid #ced4da; height: 300px; border-radius: .25rem; overflow: auto; padding: 1rem" id="log" >
+</div>
+{% endblock %}

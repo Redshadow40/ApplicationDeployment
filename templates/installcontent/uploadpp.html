@@ -1,0 +1,43 @@
+{% load static %}<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Step 1</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/loader.css' %}">
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/uploadpp.js' %}"></script>
+  </head>
+  <body>
+	<article>
+		<h1>Upload latest Installation to Environment</h1>
+		<br>
+		<p>You may upload the latest build. Click Next once latest build is uploaded.</p>
+	</article>
+	<br>
+	<form id="uploadPPForm" method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		<div class="custom-file">
+			<input type="file" class="custom-file-input" id="uploadbtn"  name="ppinstallFile" required>
+			<label id="lbluploadbtn" class="custom-file-label" for="uploadbtn">Choose file...</label>
+			<div class="invalid-feedback" id="invalidFile" style="display: none">Incorrect File Type</div>
+		</div>
+		<div style="margin: auto; width: 50%; text-align: center; padding-top: 10px;">
+			<input class="btn btn-primary" id="submit" type="submit" value="Upload" style="display: none">
+		</div>
+	</form>
+	<br>
+	{% if not filefound %}
+	<p><font color="red">*No installation file found on server, please upload a recently build.</font></p>
+	{% else %}
+	{% if currentVersion != None %}
+	<p>Current build version found on server is {{currentVersion}}</p>
+	{% else %}
+	<p>Cannot determine the current installation version uploaded.</p>
+	{% endif %}
+	{% endif %}
+	<div class="loader"></div>
+  </body>
+</html>

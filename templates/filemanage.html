@@ -1,0 +1,35 @@
+{% load static %}<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>File Explorer</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/filemanage.css' %}">
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  </head>
+  <body>
+	<div id="filearea">
+		<div id="menu" class="layout" style="padding: 10px;">
+			<button type="button" class="button" id="back-button">
+				<img src="{% static 'images/backarrow.png'%}" height="42px" width="42px">
+				Back
+			</button>
+			<button type="button" class="button" id="forward-button">
+				<img src="{% static 'images/forwardarrow.png'%}" height="42px" width="42px">	
+			</button>
+		</div>
+		<div id="address" class="layout">
+			<div style="width: 10px; padding: 0px 4px 0px 4px;"><font color="grey">Address</font></div>
+			<div style="height: 25px; background-color: white; border: 1px solid #a6bcd1"></div>
+			<div style="width: 77px; padding: 0px 8px 0px 4px;">
+				<button type="button" class="button" id="go-button">
+					<img src="{% static 'images/forwardarrow.png'%}" style="margin-right: 4px" height="25px" width="25px">Go
+				</button>
+			</div>
+		</div>
+	</div>	
+  </body>
+</html>
+

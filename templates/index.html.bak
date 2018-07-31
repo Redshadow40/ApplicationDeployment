@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}
+Dashboard
+{% endblock %}
+{% block breadcrumb %}
+<li class="breadcrumb-item active" style="font-size: 2rem;" aria-current="page">Dashboard</li>
+{% endblock %}
+
+{% block content %}
+<div class="list-group">
+	<a href="uploadpp/" class="list-group-item list-group-item-action">Upload Software</a>
+	<a href="sitesurvey/" class="list-group-item list-group-item-action">Site Survey</a>
+	<a href="installpp/" class="list-group-item list-group-item-action">Install Application</a>
+	<a href="validation/" class="list-group-item list-group-item-action">Validate Application</a>
+	<a href="tableentityid/" class="list-group-item list-group-item-action">Table Entity ID</a>
+</div>
+<div style="margin: auto; padding-top: 5px; text-align: center; color: red">
+{{info}}
+</div>
+{% endblock %}

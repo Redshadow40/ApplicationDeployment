@@ -1,0 +1,57 @@
+html {
+	height: 100%;
+	width: 100%;
+}
+
+#installarea {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: #edeadb;
+}
+
+#header {
+	display: table;
+	width: 100%;
+	height: 85%;
+}
+
+#left-portion {
+	width: 25%;
+	background: linear-gradient(#107DBA, #2EB1FA);
+	padding: 10px;
+}
+
+#left-portion div {
+	height: 100%;
+	text-align: right;
+}
+
+#right-portion {
+	width: 75%;
+	display: table-cell;
+	background-color: white;
+}
+
+#right-portion div {
+	padding: 5px;
+	width: 100%;
+	height: 100%;
+}
+
+#footer {
+	width: 100%;
+	height: 15%;
+	padding: 2% 2% 0px 0px;
+	text-align: right;
+}
+
+.button {
+	width: 130px;
+	height: 35px;
+	text-align: center;
+}
+
+#cancel-button {
+	margin-left: 15px;
+}
